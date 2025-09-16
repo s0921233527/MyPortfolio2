@@ -1,0 +1,67 @@
+/* 檔案：assets/css/style.css */
+/* 全域樣式：字體、顏色、距離等 ------------------------------------------------ */
+:root{
+  --brand-primary: #0d6efd;   /* Bootstrap 預設主色，可依企業識別修改 */
+  --text-dark: #1f2937;
+}
+
+html, body{
+  scroll-behavior: smooth;     /* 平滑捲動（搭配 main.js 有更佳效果） */
+}
+
+.section-padding{               /* 共用區塊內距 */
+  padding: 80px 0;
+}
+
+.section-title{                 /* 各區塊標題樣式 */
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+/* Hero 區 -------------------------------------------------------------------- */
+.hero{
+  position: relative;
+  min-height: 72vh;            /* 佔螢幕約七成高度 */
+  background-image: url('/assets/img/全球供應鏈.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay{                 /* 讓背景圖不搶文字：半透明遮罩 */
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+}
+
+/* 導覽列 active 樣式強化 ------------------------------------------------------ */
+.navbar .nav-link.active{
+  font-weight: 700;
+  border-bottom: 2px solid rgba(255,255,255,.85);
+}
+
+/* 回到頂端按鈕 --------------------------------------------------------------- */
+.back-to-top{
+  position: fixed;
+  right: 16px;
+  bottom: 24px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease;
+  z-index: 1050;
+}
+.back-to-top.show{
+  opacity: 1;
+  visibility: visible;
+}
+
+/* RWD 微調 ------------------------------------------------------------------- */
+@media (max-width: 991.98px){
+  .section-padding{ padding: 64px 0; }
+  .hero{ min-height: 64vh; }
+}

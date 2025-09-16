@@ -1,0 +1,331 @@
+<!doctype html>
+<!--
+  檔案：index.html
+  目的：一頁式網站主檔，搭配 Bootstrap 5。所有區塊用 <section> 並加上 id，方便導覽列錨點平滑捲動。
+  教學重點：
+    1) <head> 引入 Bootstrap 與自訂 style.css
+    2) 固定在上方的導覽列 .navbar，點擊連結會捲到對應區塊
+    3) 每個區塊套用 .section-padding 控制內距，保持視覺一致
+    4) main.js 處理「平滑捲動」與「導覽列 active 高亮」
+-->
+<html lang="zh-Hant">
+<head>
+  <!-- 基本編碼設定，確保中文不會亂碼 -->
+  <meta charset="utf-8">
+  <!-- RWD 必備：讓寬度隨裝置縮放 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>範例公司｜一頁式網站</title>
+
+  <!-- Bootstrap 5 核心 CSS（使用官方 CDN，生產環境可改為本地檔） -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons（社群/小圖示會用到） -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- 自訂樣式，放在 Bootstrap 後面以便覆蓋預設 -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#topNav" data-bs-smooth-scroll="true">
+  <!-- 導覽列：固定於頁面頂端，手機會自動變成漢堡選單 -->
+  <nav id="topNav" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm">
+    <div class="container">
+      <!-- 品牌名稱：點擊會回到首頁 hero 區 -->
+      <a class="navbar-brand fw-bold" href="#home">範例公司</a>
+
+      <!-- 漢堡按鈕：小尺寸螢幕切換導覽清單 -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="切換導覽">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- 導覽連結清單：對應每個區塊的 id -->
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#home">首頁</a></li>
+          <li class="nav-item"><a class="nav-link" href="#news">最新消息</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">關於我們</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certs">認證/證書</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">服務</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">產品介紹</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero 區：大圖 + 口號 + CTA 按鈕 -->
+  <header id="home" class="hero d-flex align-items-center text-white">
+    <div class="container position-relative z-1">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-10">
+          <h1 class="display-5 fw-bold mb-3">ISO 品質管理．安全與環境並重</h1>
+          <p class="lead opacity-75">通過 ISO 9001 / 14001 / 50001 / 45001，多年產業經驗，值得信賴。</p>
+          <a href="#contact" class="btn btn-light btn-lg mt-2">立即洽詢</a>
+        </div>
+      </div>
+    </div>
+    <!-- 英文不一定需要：這個半透明遮罩讓文字更清楚 -->
+    <div class="hero-overlay"></div>
+  </header>
+
+  <!-- 最新消息區：三欄卡片，放公告/消息摘要 -->
+  <section id="news" class="section-padding">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col text-center">
+          <h2 class="section-title">最新消息</h2>
+          <p class="text-muted">公司重要公告與近期活動</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <!-- 卡片 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="assets/img/新版網站上線.png" alt="新版網站上線">
+            <div class="card-body">
+              <h5 class="card-title">新版網站上線</h5>
+              <p class="card-text">我們將原有多頁式站點整理為一頁式，資訊更清晰、手機也好瀏覽。</p>
+            </div>
+          </div>
+        </div>
+        <!-- 卡片 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="assets/img/能源管理升級.png" alt="能源管理升級">
+            <div class="card-body">
+              <h5 class="card-title">能源管理升級</h5>
+              <p class="card-text">導入能源監測，持續優化耗能，維持 ISO 50001 規範。</p>
+            </div>
+          </div>
+        </div>
+        <!-- 卡片 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="assets/img/勞安訓練課程.png" alt="勞安訓練課程">
+            <div class="card-body">
+              <h5 class="card-title">勞安訓練課程</h5>
+              <p class="card-text">持續進行職安衛教育，落實 ISO 45001 專業要求。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 關於我們：左文右影像或影片 -->
+  <section id="about" class="section-padding bg-light">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <h2 class="section-title">關於我們</h2>
+          <p>本公司專精於鋼品加工與金屬製程，注重品質、環境與職安。秉持「誠信、專業、創新」的精神，為客戶提供可靠解決方案。</p>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check2-circle me-2"></i>ISO 9001 品質管理</li>
+            <li class="mb-2"><i class="bi bi-check2-circle me-2"></i>ISO 14001 環境管理</li>
+            <li class="mb-2"><i class="bi bi-check2-circle me-2"></i>ISO 50001 能源管理</li>
+            <li class="mb-2"><i class="bi bi-check2-circle me-2"></i>ISO 45001 職安衛管理</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <!-- 影片可替換為公司簡介檔案 -->
+          <div class="ratio ratio-16x9 rounded shadow-sm">
+            <iframe width="887" height="499" src="https://www.youtube.com/embed/Zv11L-ZfrSg?list=PL_6aGYlB77OYJ9HI9FfIFZhWpy3NhhBmu" title="Ultimate Wild Animals Collection in 8K ULTRA HD / 8K TV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>公司簡介影片</iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 證書/認證：以 Carousel 展示 -->
+  <section id="certs" class="section-padding">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col text-center">
+          <h2 class="section-title">認證與證書</h2>
+          <p class="text-muted">符合多項國際標準，品質有保證</p>
+        </div>
+      </div>
+
+      <!-- Bootstrap 輪播：左右可切換，適合展示多張證書/檢驗報告 -->
+      <div id="certCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner rounded shadow-sm">
+          <div class="carousel-item active">
+            <img src="assets/img/ISO9001 證書.png" class="d-block w-100" alt="ISO9001 證書">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/img/ISO14001 證書.png" class="d-block w-100" alt="ISO14001 證書">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/img/ISO45001 證書.png" class="d-block w-100" alt="ISO45001 證書">
+          </div>
+        </div>
+        <!-- 控制箭頭 -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#certCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">上一張</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#certCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">下一張</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 服務：三到六張圖卡 -->
+  <section id="services" class="section-padding bg-light">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col text-center">
+          <h2 class="section-title">服務項目</h2>
+          <p class="text-muted">安全、品質、效率一次到位</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="assets/img/安全稽核與教育.png" alt="安全稽核與教育">
+            <div class="card-body">
+              <h5 class="card-title">安全稽核與教育</h5>
+              <p class="card-text">提供現場安全檢查與人員訓練，降低職災風險。</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="assets/img/流程顧問與改善.png" alt="流程顧問與改善">
+            <div class="card-body">
+              <h5 class="card-title">流程顧問與改善</h5>
+              <p class="card-text">導入精實管理與品保制度，提升產能與穩定度。</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="assets/img/設備保養與維修.png" alt="設備保養與維修">
+            <div class="card-body">
+              <h5 class="card-title">設備保養與維修</h5>
+              <p class="card-text">定期保養與故障排除，維持產線可靠性。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 產品介紹 -->
+  <section id="products" class="section-padding">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col text-center">
+          <h2 class="section-title">產品介紹</h2>
+          <p class="text-muted">核心產品與規格一覽</p>
+        </div>
+      </div>
+
+      <div class="row g-4 align-items-stretch">
+        <!-- 產品卡片 A -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="assets/img/YU444 圖片.png" alt="YU444 圖片">
+            <div class="card-body">
+              <h5 class="card-title">YU444 系列</h5>
+              <p class="card-text">高耐磨、高穩定性，適用於重負載環境。</p>
+            </div>
+          </div>
+        </div>
+        <!-- 產品卡片 B -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="assets/img/YU445 圖片.png" alt="YU445 圖片">
+            <div class="card-body">
+              <h5 class="card-title">YU445 系列</h5>
+              <p class="card-text">耐蝕性佳，兼顧外觀與結構強度。</p>
+            </div>
+          </div>
+        </div>
+        <!-- 產品卡片 C -->
+        <div class="col-md-12 col-lg-4">
+          <div class="p-4 h-100 bg-light rounded border">
+            <h5 class="fw-bold">產品特色總覽</h5>
+            <ul class="mb-0">
+              <li>原料來源可溯，符合環保規範</li>
+              <li>提供尺寸客製與少量打樣</li>
+              <li>支援第三方檢測報告</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 聯絡我們：左資訊右表單（表單 demo，不含後端） -->
+  <section id="contact" class="section-padding bg-light">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col text-center">
+          <h2 class="section-title">聯絡我們</h2>
+          <p class="text-muted">歡迎留下需求，我們將盡快與您聯絡</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <!-- 公司資訊卡 -->
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">範例公司股份有限公司</h5>
+              <p class="mb-1"><i class="bi bi-geo-alt me-2"></i>台中市工業區一路 88 號</p>
+              <p class="mb-1"><i class="bi bi-telephone me-2"></i>04-1234-5678</p>
+              <p class="mb-3"><i class="bi bi-envelope me-2"></i>service@example.com</p>
+              <a class="btn btn-outline-primary btn-sm" href="mailto:service@example.com">用 Email 聯絡</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <!-- 簡易聯絡表單（僅前端示範） -->
+          <form id="contactForm" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label">姓名</label>
+                <input type="text" class="form-control" id="name" placeholder="請輸入您的姓名" required>
+                <div class="invalid-feedback">請輸入姓名</div>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                <div class="invalid-feedback">請輸入正確 Email</div>
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label">訊息</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="想詢問的內容…" required></textarea>
+                <div class="invalid-feedback">請輸入訊息</div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">送出</button>
+                <small class="text-muted ms-2">此為示範表單，未串接後端</small>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾：著作權與社群連結 -->
+  <footer class="py-4 bg-primary text-white">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <p class="mb-2 mb-md-0">© 2025 範例公司</p>
+      <div class="d-flex gap-3">
+        <a class="text-white" href="#" aria-label="facebook"><i class="bi bi-facebook fs-5"></i></a>
+        <a class="text-white" href="#" aria-label="twitter"><i class="bi bi-twitter-x fs-5"></i></a>
+        <a class="text-white" href="#" aria-label="youtube"><i class="bi bi-youtube fs-5"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 回到頂端按鈕 -->
+  <a href="#home" class="btn btn-primary back-to-top" aria-label="回到頂端"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- 依序載入 JS：Bootstrap 與自訂 main.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
