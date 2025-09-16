@@ -1,7 +1,7 @@
 /* 檔案：assets/css/style.css */
 /* 全域樣式：字體、顏色、距離等 ------------------------------------------------ */
 :root{
-  --brand-primary: #0d6efd;   /* Bootstrap 預設主色，可依企業識別修改 */
+  --brand-primary: #838383;   /* Bootstrap 預設主色，可依企業識別修改 */
   --text-dark: #1f2937;
 }
 
@@ -39,6 +39,18 @@ html, body{
   border-bottom: 2px solid rgba(255,255,255,.85);
 }
 
+/* 自訂導覽列背景顏色 */
+#topNav {
+  background-color: var(--bs-dark-bg-subtle);
+}
+
+/* 自訂按鈕樣式 */
+.btn-custom {
+  background-color: var(--bs-dark-bg-subtle);  /* 使用你指定的深色變數 */
+  color: #f8f9fa;                             /* 【重要】指定一個淺色文字 (這是 Bootstrap 的 --bs-light 顏色) */
+  border-color: var(--bs-dark-bg-subtle);      /* 讓邊框和背景同色 */
+}
+
 /* 回到頂端按鈕 --------------------------------------------------------------- */
 .back-to-top{
   position: fixed;
@@ -58,6 +70,13 @@ html, body{
 .back-to-top.show{
   opacity: 1;
   visibility: visible;
+}
+
+/* 檔案: assets/css/style.css */
+
+/* 頁尾自訂樣式 */
+footer {
+  background-color: var(--bs-dark-bg-subtle);
 }
 
 /* RWD 微調 ------------------------------------------------------------------- */
